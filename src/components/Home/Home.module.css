@@ -1,0 +1,30 @@
+.form{
+    border: 2px solid red;
+  border-radius: 4px;
+  width: 40%;
+  padding: 7px 20px;
+  margin: 8px 25%;
+  box-sizing: border-box;
+  
+}
+.submitBtn{
+    width: 40%;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 17px;
+    line-height: 25px;
+    border-radius: 10px;
+    border: none;
+    margin: 8px 25%;
+    
+}
+.submitBtn:hover{
+    
+    background-color: #ddd;
+    color: black;
+}
+.formdiv{
+    align-content: center;
+}
