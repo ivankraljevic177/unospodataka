@@ -1,31 +1,19 @@
 import NavMenu from "../NavMenu/NavMenu";
-import firebase from "../../utils/config";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import styles from "./ListClients.module.css";
 
-function ListFiles() {
-  var today = new Date();
+var today = new Date();
   var dd = String(today.getDate()).padStart(2, "0");
   var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
   var yyyy = today.getFullYear();
 
   today = yyyy + "-" + mm + "-" + dd;
 
-  const [clientList, setClientList] = useState({});
+function ListFiles(props) {
+  
+
   const [sortDate, setSortDate] = useState(today);
-  useEffect(() => {
-    firebase
-      .firestore()
-      .collection("clients")
-      .where("dateoftesting", "==", sortDate)
-      .onSnapshot((snapshot) => {
-        const newClient = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setClientList(newClient);
-      });
-  }, [sortDate]);
+  const clientList = props.useClients(sortDate);
 
   return (
     <div>

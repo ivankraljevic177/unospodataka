@@ -1,6 +1,6 @@
 import NavMenu from "../NavMenu/NavMenu";
 import firebase from "../../utils/config";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import styles from "./ListFiles.module.css";
 import CreateIcon from "@material-ui/icons/Create";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
@@ -9,40 +9,21 @@ var today = new Date();
 var dd = String(today.getDate()).padStart(2, "0");
 var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
 var yyyy = today.getFullYear();
-
 today = yyyy + "-" + mm + "-" + dd;
-
-function useClients(sortDate={today}) {
-  const [clientList, setClientList] = useState({});
-
-  useEffect(() => {
-
-    const fetchData = async()=>{
-      const db = firebase.firestore()
-      const data = await db.collection("clients")
-      .where("dateoftesting", "==", sortDate).get()
-      setClientList(data.docs.map(doc => ({...doc.data(), id: doc.id})))
-    }
-      
-    fetchData()
-  }, [sortDate]);
-
-  return clientList;
-}
 
 function ListFiles(props) {
   const [sortDate, setSortDate] = useState(today);
-  const [currentClient, setCurrentClient] = useState({});
+  const [update, setUpdate] = useState(true);
+ // const [currentClient, setCurrentClient] = useState({});
+  const clientList = props.useClients(sortDate);
 
-  console.log(currentClient.id);
+  const deleteClients =(props)=> {
+    
+    firebase.firestore().collection("clients").doc(props.id).delete().catch((e)=>{alert("Nešto je pošlo po zlu")})
+  }
+  const updateClients=(props)=>{
 
-  const clientList = useClients(sortDate);
-
-  useEffect((e)=>{
-
-    props.handleChange(currentClient)
-
-  },[currentClient])
+  }
 
 
   return (
@@ -96,12 +77,12 @@ function ListFiles(props) {
                   
 
                   <td>
-                    <button onClick={() => setCurrentClient(clientList[id])}>
+                    <button>
                       <i>
                         <CreateIcon />
                       </i>
                     </button>
-                    <button>
+                    <button onClick={()=>{deleteClients(clientList[id])}}>
                       <i>
                         <DeleteForeverIcon />
                       </i>
