@@ -1,90 +1,102 @@
 import NavMenu from "../NavMenu/NavMenu";
 import firebase from "../../utils/config";
 import { useEffect, useState } from "react";
-import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
+import styles from "./ListFiles.module.css";
 import CreateIcon from "@material-ui/icons/Create";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
-const SORT_OPTIONS = {
-  TIME_ASC: { column: "dateoftesting", direction: "asc" },
-  TIME_DESC: { column: "dateoftesting", direction: "desc" },
-};
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, "0");
+var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+var yyyy = today.getFullYear();
 
-function useClients(sortBy = "TIME_ASC") {
+today = yyyy + "-" + mm + "-" + dd;
+
+function useClients(sortDate={today}) {
   const [clientList, setClientList] = useState({});
 
   useEffect(() => {
-    firebase
-      .firestore()
-      .collection("clients")
-      .orderBy(SORT_OPTIONS[sortBy].column, SORT_OPTIONS[sortBy].direction)
-      .onSnapshot((snapshot) => {
-        const newClient = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setClientList(newClient);
-      });
-  }, [sortBy]);
+
+    const fetchData = async()=>{
+      const db = firebase.firestore()
+      const data = await db.collection("clients")
+      .where("dateoftesting", "==", sortDate).get()
+      setClientList(data.docs.map(doc => ({...doc.data(), id: doc.id})))
+    }
+      
+    fetchData()
+  }, [sortDate]);
 
   return clientList;
 }
 
-function ListFiles() {
-  const [sortBy, setSortBy] = useState("TIME_ASC");
-  const [currentId, setCurrentId] = useState();
+function ListFiles(props) {
+  const [sortDate, setSortDate] = useState(today);
+  const [currentClient, setCurrentClient] = useState({});
 
-  const clientList = useClients(sortBy);
+  console.log(currentClient.id);
+
+  const clientList = useClients(sortDate);
+
+  useEffect((e)=>{
+
+    props.handleChange(currentClient)
+
+  },[currentClient])
+
 
   return (
     <div>
       <NavMenu></NavMenu>
-      <label>Sortiraj: </label>
-      <select value={sortBy} onChange={(e) => setSortBy(e.currentTarget.value)}>
-        <option value="TIME_ASC">Prema datumu(uzlazno)</option>
-        <option value="TIME_DESC">Prema datumu(silazno)</option>
-      </select>
+      <div className = {styles.datePicker}>
+        <input
+          name="sortingDate"
+          type="date"
+          defaultValue={today}
+          onChange={(e) => setSortDate(e.target.value)}
+        ></input>
+      </div>
       <div>
-        <Table>
-          <Thead>
-            <Tr>
-              <Th>Ime i prezime</Th>
-              <Th>Datum rođenja</Th>
-              <Th>OIB</Th>
-              <Th>Broj telefona</Th>
-              <Th>Email</Th>
-              <Th>Ulica</Th>
-              <Th>Grad</Th>
-              <Th>Vrsta testiranja</Th>
-              <Th>Jezik</Th>
-              <Th>Datum testiranja</Th>
-              <Th>Vrsta računa</Th>
-              <Th>Posebne napomene</Th>
-              <Th>Cijena</Th>
-              <Th>Uredi</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
+        <table className={styles.responsivetable}>
+          <thead>
+            <tr>
+              <th>Ime i prezime</th>
+              <th>Datum rođenja</th>
+              <th>OIB</th>
+              <th>Broj telefona</th>
+              <th>Email</th>
+              <th>Ulica</th>
+              <th>Grad</th>
+              <th>Vrsta testiranja</th>
+              <th>Jezik</th>
+              <th>Datum testiranja</th>
+              <th>Vrsta računa</th>
+              <th>Posebne napomene</th>
+              <th>Cijena</th>
+              <th>Uredi</th>
+            </tr>
+          </thead>
+          <tbody>
             {Object.keys(clientList).map((id) => {
               return (
-                <Tr key={id}>
-                  <Td>{clientList[id].name}</Td>
-                  <Td>{clientList[id].dateofbirth}</Td>
-                  <Td>{clientList[id].oib}</Td>
-                  <Td>{clientList[id].number}</Td>
-                  <Td>{clientList[id].email}</Td>
-                  <Td>{clientList[id].street}</Td>
-                  <Td>{clientList[id].town}</Td>
-                  <Td>{clientList[id].typeoftesting}</Td>
-                  <Td>{clientList[id].language}</Td>
-                  <Td>{clientList[id].dateoftesting}</Td>
-                  <Td>{clientList[id].typeofbill}</Td>
-                  <Td>{clientList[id].special}</Td>
-                  <Td>{clientList[id].price}</Td>
+                <tr key={id}>
+                  <td data-label="Ime i prezime">{clientList[id].name}</td>
+                  <td data-label="Datum rođenja">{clientList[id].dateofbirth}</td>
+                  <td data-label="OIB">{clientList[id].oib}</td>
+                  <td data-label="Broj mobitela">{clientList[id].number}</td>
+                  <td data-label="Email">{clientList[id].email}</td>
+                  <td data-label="Ulica">{clientList[id].street}</td>
+                  <td data-label="Grad">{clientList[id].town}</td>
+                  <td data-label="Vrsta testiranja">{clientList[id].typeoftesting}</td>
+                  <td data-label="Jezik">{clientList[id].language}</td>
+                  <td data-label="Datum testiranja">{clientList[id].dateoftesting}</td>
+                  <td data-label="Vrsta računa">{clientList[id].typeofbill}</td>
+                  <td data-label="Cijena">{clientList[id].price}</td>
+                  <td data-label="Posebne napomene">{clientList[id].special}</td>
+                  
 
-                  <Td>
-                    <button onClick={() => setCurrentId(id)}>
+                  <td>
+                    <button onClick={() => setCurrentClient(clientList[id])}>
                       <i>
                         <CreateIcon />
                       </i>
@@ -94,12 +106,12 @@ function ListFiles() {
                         <DeleteForeverIcon />
                       </i>
                     </button>
-                  </Td>
-                </Tr>
+                  </td>
+                </tr>
               );
             })}
-          </Tbody>
-        </Table>
+          </tbody>
+        </table>
       </div>
     </div>
   );

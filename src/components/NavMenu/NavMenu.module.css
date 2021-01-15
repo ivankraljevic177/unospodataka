@@ -1,31 +1,60 @@
 .header {
-    overflow: hidden;
-    background-color: #f1f1f1;
-    padding: 20px 10px;
-  }
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px;
+}
 
-.button{
-    float: right;
-    color: black;
-    text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    font-size: 17px;
-    line-height: 25px;
-    border-radius: 10px;
-    border: none;
+.button {
+  float: right;
+  color: black;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+  font-size: 17px;
+  line-height: 25px;
+  border-radius: 10px;
+  border: none;
 }
-.button:hover{
-    background-color: #ddd;
-    color: black;
+.button:hover {
+  background-color: #ddd;
+  color: black;
 }
-.buttonActive{
-    background-color: dodgerblue;
-    color: white;
+.buttonActive {
+  background-color: dodgerblue;
+  color: white;
 }
-.logo{
+.logo {
   font-size: 25px;
   font-weight: bold;
   text-decoration: none;
   color: black;
+}
+@media only screen and (max-width: 600px) {
+  .header {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    padding: 10px 5px;
+  }
+
+  .button {
+    float: right;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 14px;
+    border-radius: 10px;
+    border: none;
+  }
+  .logo {
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+  }
+  .buttonActive {
+    background-color: dodgerblue;
+    color: white;
+  }
 }

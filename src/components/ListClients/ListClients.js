@@ -38,8 +38,8 @@ function ListFiles() {
           onChange={(e) => setSortDate(e.target.value)}
         ></input>
       </div>
-      <div className={styles.tableDiv}>
-        <table>
+      <div>
+        <table className={styles.responsivetable}>
           <thead>
             <tr>
               <th>Ime i prezime</th>
@@ -52,10 +52,10 @@ function ListFiles() {
             {Object.keys(clientList).map((id) => {
               return (
                 <tr key={id}>
-                  <td>{clientList[id].name}</td>
-                  <td>{clientList[id].email}</td>
-                  <td>{clientList[id].typeofbill}</td>
-                  <td>{clientList[id].price}</td>
+                  <td data-label="Ime i prezime">{clientList[id].name}</td>
+                  <td data-label="Email">{clientList[id].email}</td>
+                  <td data-label="Vrsta računa">{clientList[id].typeofbill}</td>
+                  <td data-label="Cijena">{clientList[id].price}</td>
                 </tr>
               );
             })}

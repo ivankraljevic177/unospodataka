@@ -1,10 +1,31 @@
+.tableDiv{
+    overflow-x:auto;
+    margin-left: 5%;
 
+}
 .datePicker{
-    margin-left: 2.5%;
+    margin-left: 5%;
     margin-top: 5px;
     margin-bottom: 5px;
 }
-  .responsivetable {
+table{
+    border: 1px solid black;
+    border-collapse:collapse;
+    width: 90%;
+}
+th{
+    text-align: left;
+    background-color: #4c7faf;
+    color: white;
+    border: 1px solid black;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+//////
+resptabl
+//////
+ .responsivetable {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
@@ -42,8 +63,6 @@
   .responsivetable td {
     padding: 10px;
     text-align: left;
-    border-left: 1px dotted rgb(197, 197, 197);
-    border-right: 1px dotted  rgb(197, 197, 197);
   }
   .responsivetable th {
     text-transform: uppercase;
@@ -71,7 +90,6 @@
     float: left;
     text-transform: uppercase;
     font-weight: bold;
-    
   }
   @media screen and (min-width: 600px) {
     .responsivetable td:before {

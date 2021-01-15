@@ -13,6 +13,7 @@ var yyyy = today.getFullYear();
 today = yyyy + '-' + mm + '-' + dd;
 
 
+
 const Home = () => {
   const history = useHistory();
   const { register, handleSubmit } = useForm();
@@ -26,6 +27,13 @@ const Home = () => {
       <NavMenu></NavMenu>
       <div className={styles.formdiv}>
         <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+            className={styles.form}
+            name="dateoftesting"
+            type = "date"
+            ref={register}
+            defaultValue={today}
+          ></input>
           <input
             className={styles.form}
             name="name"
@@ -83,13 +91,6 @@ const Home = () => {
         <option value="njemački">njemački</option>
         <option value="talijanski">talijanski</option>
       </select>
-          <input
-            className={styles.form}
-            name="dateoftesting"
-            type = "date"
-            ref={register}
-            defaultValue={today}
-          ></input>
           <select name = "typeofbill" className = {styles.form} ref={register} >
         <option value="transakcijski">transakcijski</option>
         <option value="kartica">kartica</option>
