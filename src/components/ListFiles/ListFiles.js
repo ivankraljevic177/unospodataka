@@ -4,6 +4,7 @@ import {  useState } from "react";
 import styles from "./ListFiles.module.css";
 import CreateIcon from "@material-ui/icons/Create";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import Modal from "../Modal/Modal"
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, "0");
@@ -13,9 +14,10 @@ today = yyyy + "-" + mm + "-" + dd;
 
 function ListFiles(props) {
   const [sortDate, setSortDate] = useState(today);
-  const [update, setUpdate] = useState(true);
- // const [currentClient, setCurrentClient] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const [currentClient, setCurrentClient] = useState({});
   const clientList = props.useClients(sortDate);
+  const openModal = () => setShowModal(!showModal)
 
   const deleteClients =(props)=> {
     
@@ -23,12 +25,18 @@ function ListFiles(props) {
   }
   const updateClients=(props)=>{
 
+    setCurrentClient(props)
+    openModal()
+
+
+
   }
 
 
   return (
     <div>
       <NavMenu></NavMenu>
+      <Modal showModal={showModal} setShowModal={setShowModal} currentClient={currentClient}></Modal>
       <div className = {styles.datePicker}>
         <input
           name="sortingDate"
@@ -79,10 +87,11 @@ function ListFiles(props) {
                   <td>
                     <button>
                       <i>
-                        <CreateIcon />
+                        <CreateIcon onClick={()=>updateClients(clientList[id])}/>
                       </i>
                     </button>
-                    <button onClick={()=>{deleteClients(clientList[id])}}>
+                    
+                    <button onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) deleteClients(clientList[id])} } >
                       <i>
                         <DeleteForeverIcon />
                       </i>
