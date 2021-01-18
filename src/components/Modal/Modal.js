@@ -2,14 +2,9 @@ import { React, useRef,useEffect, useState } from 'react';
 import styles from './Modal.module.css';
 import firebase from "../../utils/config";
 import { useForm } from "react-hook-form";
+import today from "../../utils/dateUtils";
 
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, "0");
-var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-var yyyy = today.getFullYear();
-today = yyyy + "-" + mm + "-" + dd;
-
-const Modal = ({showModal,setShowModal,currentClient}) => {
+const Modal = ({showModal,setShowModal,currentClient,}) => {
 
     const initalValues = {
         dateoftesting: today,

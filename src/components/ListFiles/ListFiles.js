@@ -1,18 +1,14 @@
 import NavMenu from "../NavMenu/NavMenu";
 import firebase from "../../utils/config";
-import {  useState } from "react";
+import {  useState, useEffect } from "react";
 import styles from "./ListFiles.module.css";
 import CreateIcon from "@material-ui/icons/Create";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import Modal from "../Modal/Modal"
-
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, "0");
-var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-var yyyy = today.getFullYear();
-today = yyyy + "-" + mm + "-" + dd;
+import today from "../../utils/dateUtils";
 
 function ListFiles(props) {
+  const [isEditingOrDeleting, setChange] = useState(false);
   const [sortDate, setSortDate] = useState(today);
   const [showModal, setShowModal] = useState(false);
   const [currentClient, setCurrentClient] = useState({});
@@ -22,22 +18,26 @@ function ListFiles(props) {
   const deleteClients =(props)=> {
     
     firebase.firestore().collection("clients").doc(props.id).delete().catch((e)=>{alert("Nešto je pošlo po zlu")})
+    setChange(!isEditingOrDeleting)
   }
   const updateClients=(props)=>{
 
     setCurrentClient(props)
     openModal()
 
-
-
   }
 
+  useEffect(() => {
+    
+    console.log("rerender")
+  }, [isEditingOrDeleting])
 
   return (
     <div>
       <NavMenu></NavMenu>
       <Modal showModal={showModal} setShowModal={setShowModal} currentClient={currentClient}></Modal>
       <div className = {styles.datePicker}>
+        <label>Sortiraj po datumu: </label>
         <input
           name="sortingDate"
           type="date"
@@ -60,8 +60,9 @@ function ListFiles(props) {
               <th>Jezik</th>
               <th>Datum testiranja</th>
               <th>Vrsta računa</th>
-              <th>Posebne napomene</th>
               <th>Cijena</th>
+              <th>Posebne napomene</th>
+              <th>Sestra</th>
               <th>Uredi</th>
             </tr>
           </thead>
@@ -82,8 +83,7 @@ function ListFiles(props) {
                   <td data-label="Vrsta računa">{clientList[id].typeofbill}</td>
                   <td data-label="Cijena">{clientList[id].price}</td>
                   <td data-label="Posebne napomene">{clientList[id].special}</td>
-                  
-
+                  <td data-label="Sestra">{clientList[id].nurse}</td>
                   <td>
                     <button>
                       <i>

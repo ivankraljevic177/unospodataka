@@ -1,15 +1,9 @@
 import NavMenu from "../NavMenu/NavMenu";
 import {  useState } from "react";
 import styles from "./ListClients.module.css";
+import today from "../../utils/dateUtils";
 
-var today = new Date();
-  var dd = String(today.getDate()).padStart(2, "0");
-  var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-  var yyyy = today.getFullYear();
-
-  today = yyyy + "-" + mm + "-" + dd;
-
-function ListFiles(props) {
+function ListClients(props) {
   
 
   const [sortDate, setSortDate] = useState(today);
@@ -19,6 +13,7 @@ function ListFiles(props) {
     <div>
       <NavMenu></NavMenu>
       <div className = {styles.datePicker}>
+      <label>Sortiraj po datumu: </label>
         <input
           name="sortingDate"
           type="date"
@@ -53,4 +48,4 @@ function ListFiles(props) {
     </div>
   );
 }
-export default ListFiles;
+export default ListClients;

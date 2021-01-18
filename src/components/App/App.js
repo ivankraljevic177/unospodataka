@@ -5,13 +5,7 @@ import ListFiles from '../ListFiles/ListFiles';
 import ListClients from '../ListClients/ListClients'
 import firebase from "../../utils/config";
 import './App.css';
-
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, "0");
-var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-var yyyy = today.getFullYear();
-
-today = yyyy + "-" + mm + "-" + dd;
+import today from "../../utils/dateUtils";
 
 function useClients(sortDate={today}) {
   const [clientList, setClientList] = useState({});

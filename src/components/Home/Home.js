@@ -4,14 +4,7 @@ import NavMenu from "../NavMenu/NavMenu";
 import { useForm } from "react-hook-form";
 import styles from "./Home.module.css";
 import firebase from "../../utils/config";
-
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-
-today = yyyy + '-' + mm + '-' + dd;
-
+import today from "../../utils/dateUtils";
 
 
 const Home = () => {
@@ -43,14 +36,14 @@ const Home = () => {
           <input
             className={styles.form}
             name="dateofbirth"
-            type="date"
+            type="text"
             ref={register}
-            defaultValue="1990-01-01" 
+            placeholder="Datum rođenja" 
           ></input>
           <input
             className={styles.form}
             name="oib"
-            type="number"
+            type="text"
             ref={register}
             placeholder="OIB"
           ></input>
@@ -81,8 +74,8 @@ const Home = () => {
             placeholder="Grad"
           ></input>
           <select name = "typeoftesting" className = {styles.form} ref={register} >
-        <option value="PCR Higijenski">PCR Higijenski</option>
-        <option value="PCR Virion">PCR Virion</option>
+          <option value="PCR Virion">PCR Virion</option>
+        <option value="PCR Higijenski">PCR Higijenski</option>        
         <option value="Brzi antigenski">Brzi antigenski</option>
       </select>
       <select name = "language" className = {styles.form} ref={register} >
@@ -92,22 +85,28 @@ const Home = () => {
         <option value="talijanski">talijanski</option>
       </select>
           <select name = "typeofbill" className = {styles.form} ref={register} >
+        <option value="gotovina">gotovina</option>
         <option value="transakcijski">transakcijski</option>
         <option value="kartica">kartica</option>
-        <option value="gotovina">gotovina</option>
       </select>
+      <input
+            className={styles.form}
+            name="special"
+            ref={register}
+            placeholder="Posebne napomene"
+          ></input>
           <input
             className={styles.form}
             name="price"
             ref={register}
             placeholder="Cijena"
           ></input>
-          <input
-            className={styles.form}
-            name="special"
-            ref={register}
-            placeholder="Posebne napomene"
-          ></input>
+          <select name = "nurse" className = {styles.form} ref={register} >
+        <option value="M">M</option>
+        <option value="S">S</option>
+        <option value="R">R</option>
+        <option value="R">J</option>
+      </select>
           <button className={styles.submitBtn}>Spremi</button>
         </form>
       </div>
