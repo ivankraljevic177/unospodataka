@@ -4,10 +4,10 @@ import styles from "./ListClients.module.css";
 import today from "../../utils/dateUtils";
 
 function ListClients(props) {
-  
 
   const [sortDate, setSortDate] = useState(today);
-  const clientList = props.useClients(sortDate);
+  const clientList = props.useClients({sortDate});
+  
 
   return (
     <div>

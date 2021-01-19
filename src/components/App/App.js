@@ -7,20 +7,31 @@ import firebase from "../../utils/config";
 import './App.css';
 import today from "../../utils/dateUtils";
 
-function useClients(sortDate={today}) {
+function useClients(sortDate=today,sortNurse="",isChange) {
   const [clientList, setClientList] = useState({});
 
+  console.log(sortDate)
+  console.log(sortNurse)
+  console.log(isChange)
   useEffect(() => {
 
     const fetchData = async()=>{
+     if(sortNurse !== ""){
+      const db = firebase.firestore()
+      const data = await db.collection("clients")
+      .where("dateoftesting", "==", sortDate).where("nurse", "==", sortNurse).get()
+      setClientList(data.docs.map(doc => ({...doc.data(), id: doc.id})))
+     }
+     else{
       const db = firebase.firestore()
       const data = await db.collection("clients")
       .where("dateoftesting", "==", sortDate).get()
       setClientList(data.docs.map(doc => ({...doc.data(), id: doc.id})))
+     }
     }
       
     fetchData()
-  }, [sortDate]);
+  }, [sortDate,sortNurse,isChange]);
 
   return clientList;
 }

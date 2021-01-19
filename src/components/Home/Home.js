@@ -6,7 +6,6 @@ import styles from "./Home.module.css";
 import firebase from "../../utils/config";
 import today from "../../utils/dateUtils";
 
-
 const Home = () => {
   const history = useHistory();
   const { register, handleSubmit } = useForm();
@@ -20,10 +19,10 @@ const Home = () => {
       <NavMenu></NavMenu>
       <div className={styles.formdiv}>
         <form onSubmit={handleSubmit(onSubmit)}>
-        <input
+          <input
             className={styles.form}
             name="dateoftesting"
-            type = "date"
+            type="date"
             ref={register}
             defaultValue={today}
           ></input>
@@ -38,7 +37,7 @@ const Home = () => {
             name="dateofbirth"
             type="text"
             ref={register}
-            placeholder="Datum rođenja" 
+            placeholder="Datum rođenja"
           ></input>
           <input
             className={styles.form}
@@ -73,23 +72,23 @@ const Home = () => {
             ref={register}
             placeholder="Grad"
           ></input>
-          <select name = "typeoftesting" className = {styles.form} ref={register} >
-          <option value="PCR Virion">PCR Virion</option>
-        <option value="PCR Higijenski">PCR Higijenski</option>        
-        <option value="Brzi antigenski">Brzi antigenski</option>
-      </select>
-      <select name = "language" className = {styles.form} ref={register} >
-        <option value="hrvatski">hrvatski</option>
-        <option value="engleski">engleski</option>
-        <option value="njemački">njemački</option>
-        <option value="talijanski">talijanski</option>
-      </select>
-          <select name = "typeofbill" className = {styles.form} ref={register} >
-        <option value="gotovina">gotovina</option>
-        <option value="transakcijski">transakcijski</option>
-        <option value="kartica">kartica</option>
-      </select>
-      <input
+          <select name="typeoftesting" className={styles.form} ref={register}>
+            <option value="PCR Virion">PCR Virion</option>
+            <option value="PCR Higijenski">PCR Higijenski</option>
+            <option value="Brzi antigenski">Brzi antigenski</option>
+          </select>
+          <select name="language" className={styles.form} ref={register}>
+            <option value="hrvatski">hrvatski</option>
+            <option value="engleski">engleski</option>
+            <option value="njemački">njemački</option>
+            <option value="talijanski">talijanski</option>
+          </select>
+          <select name="typeofbill" className={styles.form} ref={register}>
+            <option value="gotovina">gotovina</option>
+            <option value="transakcijski">transakcijski</option>
+            <option value="kartica">kartica</option>
+          </select>
+          <input
             className={styles.form}
             name="special"
             ref={register}
@@ -101,12 +100,18 @@ const Home = () => {
             ref={register}
             placeholder="Cijena"
           ></input>
-          <select name = "nurse" className = {styles.form} ref={register} >
-        <option value="M">M</option>
-        <option value="S">S</option>
-        <option value="R">R</option>
-        <option value="R">J</option>
-      </select>
+          <select name="nurse" className={styles.form} ref={register}>
+            <option value="M">M</option>
+            <option value="S">S</option>
+            <option value="R">R</option>
+            <option value="R">J</option>
+          </select>
+          <input
+            className={styles.form}
+            name="rb"
+            ref={register}
+            placeholder="RB"
+          ></input>
           <button className={styles.submitBtn}>Spremi</button>
         </form>
       </div>
