@@ -8,7 +8,7 @@ const Modal = ({ showModal, setShowModal, currentClient, isChange }) => {
   const initalValues = {
     dateoftesting: today,
     name: "",
-    dateofbirth: "1990-01-01",
+    dateofbirth: "",
     oib: "",
     number: "",
     email: "",
@@ -19,6 +19,8 @@ const Modal = ({ showModal, setShowModal, currentClient, isChange }) => {
     typeofbill: "",
     price: "",
     special: "",
+    nurse:"",
+    rb:""
   };
 
   useEffect(() => {
@@ -87,9 +89,9 @@ const Modal = ({ showModal, setShowModal, currentClient, isChange }) => {
                 className={styles.form}
                 name="dateofbirth"
                 ref={register}
-                type="date"
+                type="text"
                 onChange={handleInputChange}
-                value={values.dateofbirth}
+                placeholder="Datum rođenja"
               ></input>
               <input
                 className={styles.form}
@@ -184,17 +186,18 @@ const Modal = ({ showModal, setShowModal, currentClient, isChange }) => {
                 onChange={handleInputChange}
                 value={values.special}
               ></input>
-              <select name="nurse" className={styles.form} ref={register}>
+              <select name="nurse" className={styles.form} value={values.nurse} ref={register}>
                 <option value="M">M</option>
                 <option value="S">S</option>
                 <option value="R">R</option>
-                <option value="R">J</option>
+                <option value="J">J</option>
               </select>
               <input
                 className={styles.form}
                 name="rb"
                 ref={register}
                 placeholder="RB"
+                value = {values.rb}
               ></input>
               <button
                 className={styles.submitBtn}

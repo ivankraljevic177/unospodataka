@@ -60,7 +60,7 @@ function ListFiles(props) {
           <option value="M">M</option>
           <option value="S">S</option>
           <option value="R">R</option>
-          <option value="R">J</option>
+          <option value="J">J</option>
         </select>
       </div>
       <div>

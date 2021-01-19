@@ -5,8 +5,9 @@ import today from "../../utils/dateUtils";
 
 function ListClients(props) {
 
+  const sortNurse = "";
   const [sortDate, setSortDate] = useState(today);
-  const clientList = props.useClients({sortDate});
+  const clientList = props.useClients(sortDate, sortNurse);
   
 
   return (
