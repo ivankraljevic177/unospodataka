@@ -186,7 +186,7 @@ const Modal = ({ showModal, setShowModal, currentClient, isChange }) => {
                 onChange={handleInputChange}
                 value={values.special}
               ></input>
-              <select name="nurse" className={styles.form} value={values.nurse} ref={register}>
+              <select name="nurse" className={styles.form} value={values.nurse} onChange={handleInputChange} ref={register}>
                 <option value="M">M</option>
                 <option value="S">S</option>
                 <option value="R">R</option>
@@ -197,6 +197,7 @@ const Modal = ({ showModal, setShowModal, currentClient, isChange }) => {
                 name="rb"
                 ref={register}
                 placeholder="RB"
+                onChange={handleInputChange}
                 value = {values.rb}
               ></input>
               <button
