@@ -71,7 +71,6 @@
     float: left;
     text-transform: uppercase;
     font-weight: bold;
-    
   }
   @media screen and (min-width: 600px) {
     .responsivetable td:before {
