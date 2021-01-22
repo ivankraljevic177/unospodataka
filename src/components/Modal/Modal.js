@@ -93,6 +93,7 @@ const Modal = ({ showModal, setShowModal, currentClient, isChange }) => {
                 type="text"
                 onChange={handleInputChange}
                 placeholder="Datum rođenja"
+                value={values.dateofbirth}
               ></input>
               <input
                 className={styles.form}

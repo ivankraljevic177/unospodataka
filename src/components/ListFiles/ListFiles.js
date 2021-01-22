@@ -51,7 +51,7 @@ function ListFiles(props) {
           defaultValue={today}
           onChange={(e) => setSortDate(e.target.value)}
         ></input>
-        <label>Sortiraj po sestri: </label>
+        <label> Sortiraj po sestri: </label>
         <select
           name="nurse"
           className={styles.form}
