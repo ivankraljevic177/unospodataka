@@ -68,7 +68,8 @@ const Modal = ({ showModal, setShowModal, currentClient, isChange }) => {
       {showModal ? (
         <div className={styles.modal} ref={modalRef} onClick={closeModal}>
           <div className={styles.modalcontent}>
-            <form className={styles.form}>
+            <div className={styles.divModal}>
+            <form>
               <input
                 className={styles.form}
                 name="dateoftesting"
@@ -207,6 +208,7 @@ const Modal = ({ showModal, setShowModal, currentClient, isChange }) => {
                 Spremi
               </button>
             </form>
+          </div>
           </div>
         </div>
       ) : null}

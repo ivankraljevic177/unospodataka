@@ -1,81 +1,89 @@
-
-.datePicker{
-    margin-left: 2.5%;
-    margin-top: 5px;
-    margin-bottom: 5px;
+.datePicker {
+  margin-left: 2.5%;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
-  .responsivetable {
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0;
-    border-collapse: collapse;
-    border-spacing: 0;
+.tableDiv {
+  margin-left: 2.5%;
+  overflow-x: auto;
+}
+table {
+  width: 750px;
+  border-collapse: collapse;
+}
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background: rgb(247, 247, 247);
+}
+
+th {
+  background: #b5d6ec;
+  color: rgb(51, 51, 51);
+  font-weight: bold;
+}
+
+td,
+th {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 15px;
+}
+
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  table {
+    width: 100%;
   }
-  .responsivetable thead {
-    visibility: hidden;
-    background: #fafafa;
+
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
   }
-  @media screen and (min-width: 600px) {
-    .responsivetable thead {
-      visibility: visible;
-    }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
   }
-  .responsivetable tr {
-    border: 1px solid #ddd;
-    border-bottom: 2px solid #ddd;
-    padding: 5px;
+
+  tr {
+    border: 1px solid #ccc;
     margin-bottom: 10px;
-    display: block;
   }
-  @media screen and (min-width: 600px) {
-    .responsivetable tr {
-      display: table-row;
-      border-bottom-width: 1px;
-      margin-bottom: 0;
-    }
-    .responsivetable tr:nth-child(even) {
-      background: #fafafa;
-    }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
   }
-  .responsivetable th,
-  .responsivetable td {
-    padding: 10px;
-    text-align: left;
-    border-left: 1px dotted rgb(197, 197, 197);
-    border-right: 1px dotted  rgb(197, 197, 197);
-  }
-  .responsivetable th {
-    text-transform: uppercase;
-    font-size: 11px;
-  }
-  .responsivetable td {
-    display: block;
-    text-align: right;
-    font-size: 13px;
-    border-bottom: 1px dotted #ddd;
-  }
-  .responsivetable td:last-child {
-    border-bottom: none;
-  }
-  @media screen and (min-width: 600px) {
-    .responsivetable td {
-      display: table-cell;
-      text-align: left;
-      font-size: 14px;
-      border-bottom: none;
-    }
-  }
-  .responsivetable td:before {
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    /* Label the data */
     content: attr(data-label);
-    float: left;
-    text-transform: uppercase;
+    color: #000;
     font-weight: bold;
   }
-  @media screen and (min-width: 600px) {
-    .responsivetable td:before {
-      content: "";
-      display: none;
-    }
-  }
-  
+}

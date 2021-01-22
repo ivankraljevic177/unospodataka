@@ -35,6 +35,7 @@ function ListFiles(props) {
 
   return (
     <div>
+      <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
       <NavMenu></NavMenu>
       <Modal
         showModal={showModal}
@@ -63,7 +64,7 @@ function ListFiles(props) {
           <option value="J">J</option>
         </select>
       </div>
-      <div>
+      <div className ={styles.tableDiv}>
         <table className={styles.responsivetable}>
           <thead>
             <tr>

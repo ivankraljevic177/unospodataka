@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, NavbarBrand} from "reactstrap";
+import { Navbar} from "reactstrap";
 import { NavLink } from "react-router-dom";
 import styles from "./NavMenu.module.css";
 
@@ -8,9 +8,9 @@ const NavMenu = () => {
     <header className={styles.header}>
       
         <Navbar>
-          <NavbarBrand  className={styles.logo} to="/">
-            Unos briseva
-          </NavbarBrand>
+          <label className ={styles.logo}>
+            Unos briseva 
+          </label>
           <NavLink
             
             className={styles.button}
