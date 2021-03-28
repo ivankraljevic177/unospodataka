@@ -4,7 +4,6 @@ import NavMenu from "../NavMenu/NavMenu";
 import { useForm } from "react-hook-form";
 import styles from "./Home.module.css";
 import firebase from "../../utils/config";
-import today from "../../utils/dateUtils";
 
 const Home = () => {
   const history = useHistory();
@@ -24,7 +23,7 @@ const Home = () => {
             name="dateoftesting"
             type="date"
             ref={register}
-            defaultValue={today}
+            
           ></input>
           <input
             className={styles.form}
@@ -44,7 +43,7 @@ const Home = () => {
             name="oib"
             type="text"
             ref={register}
-            placeholder="OIB"
+            placeholder="OIB/MBO/Broj putovnice"
           ></input>
           <input
             className={styles.form}
@@ -76,6 +75,9 @@ const Home = () => {
             <option value="PCR Virion">PCR Virion</option>
             <option value="PCR Higijenski">PCR Higijenski</option>
             <option value="Brzi antigenski">Brzi antigenski</option>
+            <option value="PCR Labplus">PCR Labplus</option>
+            <option value="PCR Virion hitni">PCR Virion hitni</option>
+            <option value="Serologija">Serologija</option>
           </select>
           <select name="language" className={styles.form} ref={register}>
             <option value="hrvatski">hrvatski</option>

@@ -99,8 +99,8 @@ const Modal = ({ showModal, setShowModal, currentClient, isChange }) => {
                 className={styles.form}
                 name="oib"
                 ref={register}
-                type="number"
-                placeholder="OIB"
+                type="text"
+                placeholder="OIB/MBO/Broj putovnice"
                 onChange={handleInputChange}
                 value={values.oib}
               ></input>
