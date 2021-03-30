@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar} from "reactstrap";
 import { NavLink } from "react-router-dom";
 import styles from "./NavMenu.module.css";
+import logo from "../../assets/manifest-icon-192.png";
 
 const NavMenu = () => {
   return (
@@ -9,7 +10,7 @@ const NavMenu = () => {
       
         <Navbar>
           <label className ={styles.logo}>
-            Unos briseva 
+          <img src={logo} alt="Logo" className={styles.logoImg}/>
           </label>
           <NavLink
             

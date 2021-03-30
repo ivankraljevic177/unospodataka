@@ -51,13 +51,13 @@ function ListFiles(props) {
           defaultValue={today}
           onChange={(e) => setSortDate(e.target.value)}
         ></input>
-        <label> Sortiraj po sestri: </label>
+        <label> Sortiraj po provoditelju: </label>
         <select
           name="nurse"
           className={styles.form}
           onChange={(e) => setSortNurse(e.target.value)}
         >
-          <option value="">Odaberi sestru</option>
+          <option value="">Odaberi provoditelja</option>
           <option value="M">M</option>
           <option value="S">S</option>
           <option value="R">R</option>
@@ -82,7 +82,8 @@ function ListFiles(props) {
               <th>Vrsta računa</th>
               <th>Cijena</th>
               <th>Posebne napomene</th>
-              <th>Sestra</th>
+              <th>Provoditelj</th>
+              <th>Preferirano vrijeme</th>
               <th>Uredi</th>
             </tr>
           </thead>
@@ -112,7 +113,8 @@ function ListFiles(props) {
                   <td data-label="Posebne napomene">
                     {clientList[id].special}
                   </td>
-                  <td data-label="Sestra">{clientList[id].nurse}</td>
+                  <td data-label="Provoditelj">{clientList[id].nurse}</td>
+                  <td data-label="Preferirano vrijeme">{clientList[id].prefTime}</td>
                   <td>
                     <button>
                       <i>

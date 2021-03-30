@@ -23,7 +23,6 @@ const Home = () => {
             name="dateoftesting"
             type="date"
             ref={register}
-            
           ></input>
           <input
             className={styles.form}
@@ -102,18 +101,28 @@ const Home = () => {
             ref={register}
             placeholder="Cijena"
           ></input>
-          <select name="nurse" className={styles.form} ref={register}>
-            <option value="M">M</option>
-            <option value="S">S</option>
-            <option value="R">R</option>
-            <option value="J">J</option>
-          </select>
+          <input type="text" name = "nurse" list="exec" className={styles.form} ref={register} placeholder="Provoditelj" />
+          <datalist id="exec">
+            <option>M</option>
+            <option>S</option>
+            <option>R</option>
+            <option>J</option>
+            <option>Ivan Maleš</option>
+          </datalist>
+          <input
+            className={styles.form}
+            name="prefTime"
+            ref={register}
+            placeholder="Preferirano vrijeme"
+          ></input>
           <input
             className={styles.form}
             name="rb"
             ref={register}
             placeholder="RB"
           ></input>
+
+
           <button className={styles.submitBtn}>Spremi</button>
         </form>
       </div>
