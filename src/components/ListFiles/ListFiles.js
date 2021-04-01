@@ -52,17 +52,15 @@ function ListFiles(props) {
           onChange={(e) => setSortDate(e.target.value)}
         ></input>
         <label> Sortiraj po provoditelju: </label>
-        <select
-          name="nurse"
-          className={styles.form}
-          onChange={(e) => setSortNurse(e.target.value)}
-        >
-          <option value="">Odaberi provoditelja</option>
-          <option value="M">M</option>
-          <option value="S">S</option>
-          <option value="R">R</option>
-          <option value="J">J</option>
-        </select>
+
+        <input type="text" name = "nurse" list="exec" className={styles.form} onChange={(e) => setSortNurse(e.target.value)} placeholder="Provoditelj" />
+          <datalist id="exec">
+            <option>M</option>
+            <option>S</option>
+            <option>R</option>
+            <option>J</option>
+            <option>Ivan Maleš</option>
+          </datalist>
       </div>
       <div className ={styles.tableDiv}>
         <table className={styles.responsivetable}>
