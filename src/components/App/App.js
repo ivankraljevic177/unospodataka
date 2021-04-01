@@ -11,10 +11,6 @@ import today from "../../utils/dateUtils";
 function useClients(sortDate = today, sortNurse = "", isChange) {
   const [clientList, setClientList] = useState({});
 
-
-  console.log(sortDate);
-  console.log(sortNurse);
-  console.log(isChange);
   useEffect(() => {
     const fetchData = async () => {
       if (sortNurse !== "") {
@@ -23,7 +19,6 @@ function useClients(sortDate = today, sortNurse = "", isChange) {
           .collection("clients")
           .where("dateoftesting", "==", sortDate)
           .where("nurse", "==", sortNurse)
-          .orderBy('rb','asc')
           .get();
         setClientList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       } else {
