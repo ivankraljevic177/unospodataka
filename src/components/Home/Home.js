@@ -23,6 +23,7 @@ const Home = () => {
             name="dateoftesting"
             type="date"
             ref={register}
+            required
           ></input>
           <input
             className={styles.form}
@@ -110,8 +111,11 @@ const Home = () => {
             <option>Ivan Maleš</option>
           </datalist>
           <input
+            type="time"
+            label="Vrijeme"
             className={styles.form}
             name="prefTime"
+            defaultValue="07:30"
             ref={register}
             placeholder="Preferirano vrijeme"
           ></input>

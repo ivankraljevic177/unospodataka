@@ -211,6 +211,7 @@ const Modal = ({ showModal, setShowModal, currentClient, isChange }) => {
                 </datalist>
                 <input
                   className={styles.form}
+                  type="time"
                   name="prefTime"
                   ref={register}
                   placeholder="Preferirano vrijeme"

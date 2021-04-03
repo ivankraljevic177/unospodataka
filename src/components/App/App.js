@@ -19,6 +19,7 @@ function useClients(sortDate = today, sortNurse = "", isChange) {
           .collection("clients")
           .where("dateoftesting", "==", sortDate)
           .where("nurse", "==", sortNurse)
+          .orderBy("prefTime")
           .get();
         setClientList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       } else {
@@ -26,6 +27,7 @@ function useClients(sortDate = today, sortNurse = "", isChange) {
         const data = await db
           .collection("clients")
           .where("dateoftesting", "==", sortDate)
+          .orderBy("prefTime")
           .get();
         setClientList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       }
