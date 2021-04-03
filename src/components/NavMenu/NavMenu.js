@@ -1,5 +1,4 @@
 import React from "react";
-import { Navbar} from "reactstrap";
 import { NavLink } from "react-router-dom";
 import styles from "./NavMenu.module.css";
 import logo from "../../assets/manifest-icon-192.png";
@@ -7,12 +6,14 @@ import logo from "../../assets/manifest-icon-192.png";
 const NavMenu = () => {
   return (
     <header className={styles.header}>
-      
-        <Navbar>
-          <label className ={styles.logo}>
-          <img src={logo} alt="Logo" className={styles.logoImg}/>
-          </label>
-          <NavLink
+      <nav className={styles.toolbar_nav}>
+
+        <div></div>
+        <div className ={styles.toolbar_logo}>
+          <a href="/">LOGO</a>
+        </div>
+        <div className = {styles.toolbar_items}>
+        <NavLink
             
             className={styles.button}
             activeClassName={styles.buttonActive}
@@ -40,9 +41,8 @@ const NavMenu = () => {
           >
             Novi bris
           </NavLink>
-          
-        </Navbar>
-     
+        </div>
+      </nav>
     </header>
   );
 };
