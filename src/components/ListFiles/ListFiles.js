@@ -45,6 +45,7 @@ function ListFiles(props) {
         currentClient={currentClient}
         isChange={change}
       ></Modal>
+      <div className={styles.bodyDiv}>
       <div className={styles.datePicker}>
         <label>Sortiraj po datumu: </label>
         <input
@@ -143,6 +144,7 @@ function ListFiles(props) {
             })}
           </tbody>
         </table>
+      </div>
       </div>
     </div>
   );

@@ -2,6 +2,8 @@ import NavMenu from "../NavMenu/NavMenu";
 import {  useState } from "react";
 import styles from "./ListClients.module.css";
 import today from "../../utils/dateUtils";
+import Grid from "@material-ui/core";
+import CardDetails from "../CardDetails/CardDetails";
 
 function ListClients(props) {
 
@@ -13,6 +15,7 @@ function ListClients(props) {
   return (
     <div>
       <NavMenu></NavMenu>
+      <div className={styles.bodyDiv}>
       <div className = {styles.datePicker}>
       <label>Sortiraj po datumu: </label>
         <input
@@ -23,28 +26,8 @@ function ListClients(props) {
         ></input>
       </div>
       <div>
-        <table className={styles.responsivetable}>
-          <thead>
-            <tr>
-              <th>Ime i prezime</th>
-              <th>Email</th>
-              <th>Vrsta računa</th>
-              <th>Cijena</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.keys(clientList).map((id) => {
-              return (
-                <tr key={id}>
-                  <td data-label="Ime i prezime">{clientList[id].name}</td>
-                  <td data-label="Email">{clientList[id].email}</td>
-                  <td data-label="Vrsta računa">{clientList[id].typeofbill}</td>
-                  <td data-label="Cijena">{clientList[id].price}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <CardDetails clientList = {clientList}></CardDetails>
+      </div>
       </div>
     </div>
   );
