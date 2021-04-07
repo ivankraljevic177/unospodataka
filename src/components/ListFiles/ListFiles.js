@@ -68,7 +68,6 @@ function ListFiles(props) {
         <table className={styles.responsivetable}>
           <thead>
             <tr>
-              <th>RB</th>
               <th>Ime i prezime</th>
               <th>Datum rođenja</th>
               <th>OIB</th>
@@ -91,7 +90,6 @@ function ListFiles(props) {
             {Object.keys(clientList).map((id) => {
               return (
                 <tr key={id}>
-                  <td data-label="RB">{clientList[id].rb}</td>
                   <td data-label="Ime i prezime">{clientList[id].name}</td>
                   <td data-label="Datum rođenja">
                     {clientList[id].dateofbirth}

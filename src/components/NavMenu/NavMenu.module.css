@@ -5,7 +5,7 @@
   height: 56px; 
   top: 0;
   left: 0;
-
+  z-index:1;
 }
 .spacer{
   flex: 1;
@@ -49,4 +49,15 @@
 .buttonActive{
   color: white;
   background-color: royalblue;
+}
+@media only screen and (max-width: 630px) {
+  .toolbar_logo{
+    display: none;
+  }
+
+  .toolbar_items a{
+    font-size: 14px;
+    padding: 7px 5px;
+  }
+
 }

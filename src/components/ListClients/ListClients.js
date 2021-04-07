@@ -2,12 +2,11 @@ import NavMenu from "../NavMenu/NavMenu";
 import {  useState } from "react";
 import styles from "./ListClients.module.css";
 import today from "../../utils/dateUtils";
-import Grid from "@material-ui/core";
 import CardDetails from "../CardDetails/CardDetails";
 
 function ListClients(props) {
 
-  const sortNurse = "";
+  const [sortNurse, setSortNurse] = useState("");
   const [sortDate, setSortDate] = useState(today);
   const clientList = props.useClients(sortDate, sortNurse);
   
@@ -24,9 +23,22 @@ function ListClients(props) {
           defaultValue={today}
           onChange={(e) => setSortDate(e.target.value)}
         ></input>
+        <label> Sortiraj po provoditelju: </label>
+        <input type="text" name = "nurse" list="exec" className={styles.form} onChange={(e) => setSortNurse(e.target.value)} placeholder="Provoditelj" />
+          <datalist id="exec">
+            <option>M</option>
+            <option>S</option>
+            <option>R</option>
+            <option>J</option>
+            <option>Ivan Maleš</option>
+          </datalist>
       </div>
-      <div>
-        <CardDetails clientList = {clientList}></CardDetails>
+      <div className={styles.cardDiv}>
+      {Object.keys(clientList).map((id) => {
+          return (
+            <CardDetails key={id} clientList={clientList[id]} ></CardDetails>
+          );
+        })}
       </div>
       </div>
     </div>

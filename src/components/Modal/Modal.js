@@ -30,6 +30,7 @@ const Modal = ({ showModal, setShowModal, currentClient, isChange }) => {
     } else {
       setValues({ ...currentClient });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentClient]);
 
   const [values, setValues] = useState(initalValues);
