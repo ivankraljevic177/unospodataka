@@ -34,11 +34,17 @@ function CardDetails(props) {
                 </IconButton>
               }
               title={props.clientList.name}
-              subheader={props.clientList.street + " | " + props.clientList.typeoftesting + " | "+ props.clientList.price}
+              subheader={
+                props.clientList.street +
+                " | " +
+                props.clientList.typeoftesting +
+                " | " +
+                props.clientList.price
+              }
             />
-            <CardActions disableSpacing className={styles.cardBtn}  >
+            <CardActions disableSpacing className={styles.cardBtn}>
               <IconButton aria-label="Edit">
-                <CreateIcon/>
+                <CreateIcon />
               </IconButton>
               <IconButton aria-label="Delete">
                 <DeleteForeverIcon />
