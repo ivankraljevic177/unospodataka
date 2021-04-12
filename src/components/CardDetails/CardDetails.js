@@ -15,21 +15,28 @@ import {
   Collapse,
   Typography,
 } from "@material-ui/core";
+import firebase from "../../utils/config";
 
 function CardDetails(props) {
   const [expanded, setExpanded] = useState(false);
+  const [done, setDone] = useState(false);
+  
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handleDoneClick = (props) => {
+    
   };
 
   return (
     <div className={styles.rootDiv}>
       <Grid container spacing={3} justify="center">
         <Grid item xs={10} sm={6}>
-          <Card className={styles.cardStyle} raised={true}>
+          <Card className={done ? styles.cardStyleDone:styles.cardStyle} raised={true}>
             <CardHeader
               action={
-                <IconButton aria-label="done">
+                <IconButton aria-label="Done" onClick={handleDoneClick(props.clientList.rb)} >
                   <DoneIcon />
                 </IconButton>
               }
@@ -43,7 +50,7 @@ function CardDetails(props) {
               }
             />
             <CardActions disableSpacing className={styles.cardBtn}>
-              <IconButton aria-label="Edit">
+              <IconButton aria-label="Edit" >
                 <CreateIcon />
               </IconButton>
               <IconButton aria-label="Delete">

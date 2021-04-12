@@ -11,3 +11,10 @@
 .cardBtn{
     margin-left: auto;
 }
+.cardStyle{
+    
+}
+.cardStyleDone{
+    text-decoration: line-through;
+    background-color: #e2aebf;
+}

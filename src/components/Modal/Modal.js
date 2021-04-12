@@ -221,6 +221,7 @@ const Modal = ({ showModal, setShowModal, currentClient, isChange }) => {
                 ></input>
                 <input
                   className={styles.form}
+                  type="checkbox"
                   name="rb"
                   ref={register}
                   placeholder="RB"
