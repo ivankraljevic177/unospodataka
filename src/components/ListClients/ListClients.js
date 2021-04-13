@@ -2,7 +2,7 @@ import NavMenu from "../NavMenu/NavMenu";
 import {  useState } from "react";
 import styles from "./ListClients.module.css";
 import today from "../../utils/dateUtils";
-import CardDetails from "../CardDetails/CardDetails";
+import CardDetails from "../Card/Card";
 
 function ListClients(props) {
 

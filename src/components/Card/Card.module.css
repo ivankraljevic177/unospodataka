@@ -1,0 +1,74 @@
+.main{
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 500px;
+    text-align: center;
+    font-family: arial;
+    margin: 10px;
+    background-color: rgb(187, 219, 247);
+
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  .btn {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: rgb(144, 180, 226);
+    text-align: center;
+    cursor: pointer;
+    width: 80%;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+  
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
+
+  .card_done {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 500px;
+    text-align: center;
+    font-family: arial;
+    margin: 10px;
+    background-color: #dbbccd;
+    text-decoration: line-through;
+
+  }
+  @media (prefers-color-scheme: dark) {
+   
+    .card_done {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      width: 500px;
+      text-align: center;
+      font-family: arial;
+      margin: 10px;
+      background-color: #dbbccd;
+      text-decoration: line-through;
+    }
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      width: 500px;
+      text-align: center;
+      font-family: arial;
+      margin: 10px;
+      background-color: rgb(187, 219, 247);
+  
+    }
+  }
